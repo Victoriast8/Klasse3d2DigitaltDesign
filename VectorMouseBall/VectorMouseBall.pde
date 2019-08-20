@@ -19,19 +19,21 @@ void draw() {
   
   velocity.add(dir);
   
-  if (location.x > width-40) {
+  if (location.x > width-20) {
     velocity.x = velocity.x * -1;
-  } else if (location.x < 40) {
+  } else if (location.x < 20) {
     velocity.x = velocity.x * -1;
   }
   
-  if (location.y > height-40) {
+  if (location.y > height-20) {
     velocity.y = velocity.y * -1;
-  } else if (location.y < 40) {
+  } else if (location.y < 20) {
     velocity.y = velocity.y * -1;
   }
   
-  velocity.limit(7);
+  velocity.limit(1000/dist(mouseX, mouseY, location.x, location.y)); //Kan ændres for at løse udfordring 1
+  
+  velocity.mult(0.98);
   
   location.sub(velocity);
   

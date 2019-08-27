@@ -1,4 +1,5 @@
 class CannonBall {
+  float angle, rotation;
   PVector pos, vel, gra = new PVector(0, 1);
   
   CannonBall(PVector pos, PVector vel) {
@@ -12,11 +13,18 @@ class CannonBall {
     vel.mult(0.98);
     
     pos.add(vel);
+    
+    angle = PI/16;
   }
   
   void display() {
     rectMode(CENTER);
     fill(30);
-    rect(pos.x, pos.y, 30, 30);
+    pushMatrix();
+    translate(pos.x, pos.y);
+    rotation += angle;
+    rotate(rotation);
+    rect(0, 0, 30, 30);
+    popMatrix();
   }
 }

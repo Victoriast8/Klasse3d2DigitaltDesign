@@ -24,7 +24,7 @@ void draw() {
   fill(30,30,30);
   pushMatrix();
   rotate(PI/4);
-  rect(450, height/4-110, 80, 220);
+  rect(449, height/4-110, 80, 220);
   popMatrix();
   
   fill(205, 133, 63);

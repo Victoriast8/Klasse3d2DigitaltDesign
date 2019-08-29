@@ -1,7 +1,7 @@
 class CannonBall {
   float angle, rotation, radius = height/25;
   PVector pos, vel, gra = new PVector(0, 1);
-  PVector c1, c2, c3, c4;
+  PVector c1, c2, c3, c4;          //corner 1, corner 2...
   
   CannonBall(PVector pos, PVector vel) {
     this.pos = pos;
@@ -13,23 +13,16 @@ class CannonBall {
   }
   
   void update() {
-    
     vel.add(gra);
-    
     vel.mult(0.98);
-    
     pos.add(vel);
-    
-    
-    
-    if (vel.mag() > 0.5){
+    if (vel.mag() > 0.6){
       angle = vel.mag()/100;
     } else {
       angle = 0;
     }
     
     rotation += angle;
-    
     c1.rotate(angle);
     c2.rotate(angle);
     c3.rotate(angle);
@@ -51,11 +44,6 @@ class CannonBall {
       vel.y *= -1;
       pos.y += (height-height/8)-(pos.y + c4.y);
     }
-    
-    /*if(pos.y + radius/2 >= height-height/8) {
-      vel.y *= -1;
-      pos.y = height-height/8-radius/2;
-    }*/
   }
   
   void display() {

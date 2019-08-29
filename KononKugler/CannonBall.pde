@@ -60,7 +60,7 @@ class CannonBall {
   
   void display() {
     rectMode(CENTER);
-    fill(110);
+    fill(60);
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(rotation);

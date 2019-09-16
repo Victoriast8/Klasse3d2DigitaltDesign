@@ -40,4 +40,7 @@ class Tank {
     pos.add(vel);
   }
   
+  void shoot() {
+    skudList.add(new Skud(new PVector(this.pos.x, this.pos.y), new PVector(dir.x, dir.y)));
+  }
 }

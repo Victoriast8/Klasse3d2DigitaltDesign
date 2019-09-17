@@ -4,7 +4,7 @@ ArrayList<Skud> skudList;
 void setup() {
   fullScreen();
   frameRate(60);
-  tank1 = new Tank(new PVector(width/2, height/2));
+  tank1 = new Tank(new PVector((width*2)/3, (height*2)/3));
   tank2 = new Tank(new PVector(width/3, height/3));
   skudList = new ArrayList<Skud>();
 }
@@ -21,6 +21,11 @@ void draw() {
   
   for (int i = 0; i < skudList.size(); i++) {
     skudList.get(i).shotMoving();
+  }
+  for (int i = skudList.size(); i > 0; i--) {
+    if (skudList.get(i-1).dead) {
+    skudList.remove(i-1);
+    }
   }
 }
 
@@ -41,6 +46,9 @@ void keyPressed() {
   }
   if (key == 'm' || key == 'M') {
     tank1.shoot();
+  }
+  if (key == 'c' || key == 'C') {
+    tank2.shoot();
   }
   if (key == 'w' || key == 'W') {
     tank2.up = true;

@@ -1,7 +1,7 @@
 class Tank {
   
   PVector dir, pos, vel;
-  float angle, rad, force = 0.3, rotationForce = PI/32;
+  float angle, rad, force = 0.3, rotationForce = PI/42;
   boolean up, left, right, down;
   
   Tank(PVector pos) {

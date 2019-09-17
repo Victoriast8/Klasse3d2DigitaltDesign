@@ -1,5 +1,8 @@
 Tank tank1, tank2;
 ArrayList<Skud> skudList;
+int gamestate = 0;
+Tscreen ts;
+
 
 void setup() {
   fullScreen();
@@ -7,25 +10,33 @@ void setup() {
   tank1 = new Tank(new PVector((width*2)/3, (height*2)/3));
   tank2 = new Tank(new PVector(width/3, height/3));
   skudList = new ArrayList<Skud>();
+  ts = new Tscreen();
 }
 
 void draw() {
-  background(255);
+  switch (gamestate) {
+    case 1:
+      background(255);
+      tank1.update();
+      tank2.update();
+      fill(255, 0, 0);
+      tank1.render();
+      fill(0, 255, 0);
+      tank2.render();
   
-  tank1.update();
-  tank2.update();
-  fill(255,0,0);
-  tank1.render();
-  fill(0,255,0);
-  tank2.render();
-  
-  for (int i = 0; i < skudList.size(); i++) {
-    skudList.get(i).shotMoving();
-  }
-  for (int i = skudList.size(); i > 0; i--) {
-    if (skudList.get(i-1).dead) {
-    skudList.remove(i-1);
-    }
+      for (int i = 0; i < skudList.size(); i++) {
+        skudList.get(i).shotMoving();
+      }
+      for (int i = skudList.size(); i > 0; i--) {
+        if (skudList.get(i-1).dead) {
+          skudList.remove(i-1);
+        }
+      }
+      break;
+    case 0:
+      ts.display();
+      
+      break;
   }
 }
 
@@ -79,7 +90,7 @@ void keyReleased() {
       tank1.down = false;
     }
   }
-  
+
   if (key == 'w' || key == 'W') {
     tank2.up = false;
   }
